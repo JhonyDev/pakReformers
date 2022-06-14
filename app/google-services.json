@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "319283471757",
+    "project_id": "cattleproject-597cd",
+    "storage_bucket": "cattleproject-597cd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:319283471757:android:26aac04f0010c4154f49c4",
+        "android_client_info": {
+          "package_name": "com.app.cattlemanagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "319283471757-odvv1caei42qc0nme2363ft44i613cel.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdZ5ArUPy_useQYvVyKFn2znCnAP-O6ok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "319283471757-odvv1caei42qc0nme2363ft44i613cel.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
