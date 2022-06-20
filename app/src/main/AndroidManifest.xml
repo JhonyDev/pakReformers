@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.app.cattlemanagement">
+    package="com.app.pakreformers">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,19 +12,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CattleManagement">
         <activity
-            android:name=".activities.seller.SellerDashboard"
+            android:name=".DrivesActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.volunteer.DriveDetails"
             android:exported="false" />
         <activity
-            android:name=".activities.buyer.BuyerDashboard"
+            android:name=".activities.volunteer.DrivesDashboard"
             android:exported="false" />
         <activity
-            android:name=".activities.auth.AuthRegistration"
+            android:name="com.app.pakreformers.activities.auth.AuthRegistration"
             android:exported="false" />
         <activity
-            android:name=".activities.auth.AuthLoginActivity"
+            android:name="com.app.pakreformers.activities.auth.AuthLoginActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.Splash"
+            android:name="com.app.pakreformers.activities.Splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

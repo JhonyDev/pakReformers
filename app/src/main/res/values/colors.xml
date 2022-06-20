@@ -24,6 +24,7 @@
     <color name="dayDeselected">@color/gray</color>
     <color name="dayDeselectedTextColor">@android:color/white</color>
     <color name="red">#FF1100</color>
-    <color name="yellow">@color/green</color>
+    <color name="yellow">@color/blue</color>
     <color name="yellow_orig">#FFD900</color>
+    <color name="blue">#00A6FF</color>
 </resources>

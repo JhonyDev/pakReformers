@@ -1,11 +1,11 @@
-package com.app.cattlemanagement.utils;
+package com.app.pakreformers.utils;
 
 import android.app.Dialog;
 import android.view.Window;
 import android.view.WindowManager;
 
 
-import com.app.cattlemanagement.R;
+import com.app.pakreformers.R;
 
 import java.util.Objects;
 

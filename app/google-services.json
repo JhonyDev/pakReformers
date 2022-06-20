@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "319283471757",
-    "project_id": "cattleproject-597cd",
-    "storage_bucket": "cattleproject-597cd.appspot.com"
+    "project_number": "198801193531",
+    "project_id": "pakreformers-55692",
+    "storage_bucket": "pakreformers-55692.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:319283471757:android:26aac04f0010c4154f49c4",
+        "mobilesdk_app_id": "1:198801193531:android:1be9992f510bc45763ba1e",
         "android_client_info": {
-          "package_name": "com.app.cattlemanagement"
+          "package_name": "com.app.pakreformers"
         }
       },
       "oauth_client": [
         {
-          "client_id": "319283471757-odvv1caei42qc0nme2363ft44i613cel.apps.googleusercontent.com",
+          "client_id": "198801193531-2pjahhfngs978p31d0gd71s7ih3ankcv.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAdZ5ArUPy_useQYvVyKFn2znCnAP-O6ok"
+          "current_key": "AIzaSyD4UUFYeARS3UGDovfXmVRP4WATGfbHdAY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "319283471757-odvv1caei42qc0nme2363ft44i613cel.apps.googleusercontent.com",
+              "client_id": "198801193531-2pjahhfngs978p31d0gd71s7ih3ankcv.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

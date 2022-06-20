@@ -1,4 +1,4 @@
-package com.app.cattlemanagement.info;
+package com.app.pakreformers.info;
 
 public interface Info {
     String TAG = "bruteforce";

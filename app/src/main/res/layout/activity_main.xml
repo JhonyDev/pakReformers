@@ -50,7 +50,7 @@
                 app:lottie_autoPlay="true"
                 app:lottie_enableMergePathsForKitKatAndAbove="true"
                 app:lottie_imageAssetsFolder="images/"
-                app:lottie_rawRes="@raw/barn"
+                app:lottie_rawRes="@raw/earth_mask"
                 app:lottie_repeatCount="99999"
                 app:lottie_repeatMode="restart" />
 

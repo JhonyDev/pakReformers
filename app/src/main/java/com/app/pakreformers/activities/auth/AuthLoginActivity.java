@@ -1,4 +1,4 @@
-package com.app.cattlemanagement.activities.auth;
+package com.app.pakreformers.activities.auth;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -14,13 +14,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.app.cattlemanagement.R;
-import com.app.cattlemanagement.activities.buyer.BuyerDashboard;
-import com.app.cattlemanagement.info.Info;
-import com.app.cattlemanagement.models.User;
-import com.app.cattlemanagement.singletons.CurrentUserSingleton;
-import com.app.cattlemanagement.utils.DialogUtils;
-import com.app.cattlemanagement.utils.Utils;
+import com.app.pakreformers.R;
+import com.app.pakreformers.activities.volunteer.DriveDetails;
+import com.app.pakreformers.activities.volunteer.DrivesDashboard;
+import com.app.pakreformers.info.Info;
+import com.app.pakreformers.models.User;
+import com.app.pakreformers.singletons.CurrentUserSingleton;
+import com.app.pakreformers.utils.DialogUtils;
+import com.app.pakreformers.utils.Utils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -78,7 +79,7 @@ public class AuthLoginActivity extends AppCompatActivity implements Info {
                             return;
                         }
                         CurrentUserSingleton.setInstance(userModel);
-                        startActivity(new Intent(AuthLoginActivity.this, BuyerDashboard.class));
+                        startActivity(new Intent(AuthLoginActivity.this, DrivesDashboard.class));
                         finish();
                     }
 
@@ -158,7 +159,7 @@ public class AuthLoginActivity extends AppCompatActivity implements Info {
                             return;
                         }
                         CurrentUserSingleton.setInstance(user);
-                        startActivity(new Intent(AuthLoginActivity.this, BuyerDashboard.class));
+                        startActivity(new Intent(AuthLoginActivity.this, DriveDetails.class));
                         finish();
 
                     }

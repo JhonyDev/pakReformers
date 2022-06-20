@@ -1,6 +1,6 @@
-package com.app.cattlemanagement.singletons;
+package com.app.pakreformers.singletons;
 
-import com.app.cattlemanagement.models.User;
+import com.app.pakreformers.models.User;
 
 public class CurrentUserSingleton {
     public static User instance;
