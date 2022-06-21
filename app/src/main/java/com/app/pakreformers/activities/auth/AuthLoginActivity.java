@@ -91,6 +91,9 @@ public class AuthLoginActivity extends AppCompatActivity implements Info {
     }
 
 
+
+
+
     public void signUp(View view) {
         startActivity(new Intent(this, AuthRegistration.class));
     }
