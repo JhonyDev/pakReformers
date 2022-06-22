@@ -2,18 +2,18 @@ package com.app.pakreformers.models;
 
 public class User {
     String id, firstName, lastName, desc,
-            phone, type, status;
+            phone, address, status;
 
     public User() {
     }
 
-    public User(String id, String firstName, String lastName, String desc, String phone, String type, String status) {
+    public User(String id, String firstName, String lastName, String desc, String phone, String address, String status) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.desc = desc;
         this.phone = phone;
-        this.type = type;
+        this.address = address;
         this.status = status;
     }
 
@@ -57,12 +57,12 @@ public class User {
         this.phone = phone;
     }
 
-    public String getType() {
-        return type;
+    public String getAddress() {
+        return address;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getVerStatus() {

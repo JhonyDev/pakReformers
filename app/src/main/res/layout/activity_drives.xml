@@ -44,6 +44,7 @@
         android:layout_columnWeight="1"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="10dp"
+        android:onClick="createDrive"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="10dp"
         app:cardElevation="5dp"

@@ -31,4 +31,8 @@ public class DrivesDashboard extends AppCompatActivity {
         startActivity(new Intent(this, AuthLoginActivity.class));
         finish();
     }
+
+    public void createDrive(View view) {
+        startActivity(new Intent(this, CreateDrive.class));
+    }
 }

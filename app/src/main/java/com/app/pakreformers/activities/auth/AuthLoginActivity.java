@@ -162,7 +162,7 @@ public class AuthLoginActivity extends AppCompatActivity implements Info {
                             return;
                         }
                         CurrentUserSingleton.setInstance(user);
-                        startActivity(new Intent(AuthLoginActivity.this, DriveDetails.class));
+                        startActivity(new Intent(AuthLoginActivity.this, DrivesDashboard.class));
                         finish();
 
                     }

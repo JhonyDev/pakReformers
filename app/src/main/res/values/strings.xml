@@ -232,4 +232,30 @@
     <string name="add_new_attendance_for_today">Add new attendance for this date</string>
     <string name="attendance">Attendance</string>
     <string name="month">Month</string>
+
+
+    <string-array name="provinces">
+        <item>Gilgit-Baltistan</item>
+        <item>Punjab</item>
+        <item>KPK</item>
+        <item>Sindh</item>
+        <item>Balochistan</item>
+    </string-array>
+
+
+    <string-array name="drive_type">
+        <item>Disaster</item>
+        <item>Plantation</item>
+        <item>Flood</item>
+        <item>Accident</item>
+        <item>Street Cleaning</item>
+    </string-array>
+    <string name="leku_title_activity_location_picker">Location Picker</string>
+    <string name="leku_load_location_error">Something went wrong. Please try again.</string>
+    <string name="leku_no_search_results">There are no results for your search</string>
+    <string name="leku_unknown_location">unknown location</string>
+    <string name="leku_voice_search_promp">Search by voice…</string>
+    <string name="leku_voice_search_extra_language">en-EN</string>
+    <string name="leku_toolbar_action_voice_title">Voice</string>
+    <string name="leku_search_hint">Search</string>
 </resources>

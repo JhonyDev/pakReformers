@@ -18,11 +18,13 @@
         <entry key="..\:/Users/Jhony Dev/AndroidStudioProjects/CattleManagement/app/src/main/res/layout/date_picker_dialog.xml" value="0.1" />
         <entry key="..\:/Users/Jhony Dev/AndroidStudioProjects/CattleManagement/app/src/main/res/layout/dialog_loading.xml" value="0.1" />
         <entry key="..\:/Users/Jhony Dev/AndroidStudioProjects/pakReformers/app/src/main/res/layout/activity_buyer_dashboard.xml" value="0.2" />
-        <entry key="..\:/Users/Jhony Dev/AndroidStudioProjects/pakReformers/app/src/main/res/layout/activity_drives.xml" value="0.264" />
-        <entry key="..\:/Users/Jhony Dev/AndroidStudioProjects/pakReformers/app/src/main/res/layout/activity_main.xml" value="0.10185185185185185" />
-        <entry key="..\:/Users/Jhony Dev/AndroidStudioProjects/pakReformers/app/src/main/res/layout/activity_registration.xml" value="0.10185185185185185" />
+        <entry key="..\:/Users/Jhony Dev/AndroidStudioProjects/pakReformers/app/src/main/res/layout/activity_create_drive.xml" value="0.2" />
+        <entry key="..\:/Users/Jhony Dev/AndroidStudioProjects/pakReformers/app/src/main/res/layout/activity_drives.xml" value="0.2" />
+        <entry key="..\:/Users/Jhony Dev/AndroidStudioProjects/pakReformers/app/src/main/res/layout/activity_main.xml" value="0.4" />
+        <entry key="..\:/Users/Jhony Dev/AndroidStudioProjects/pakReformers/app/src/main/res/layout/activity_registration.xml" value="0.2" />
         <entry key="..\:/Users/Jhony Dev/AndroidStudioProjects/pakReformers/app/src/main/res/layout/activity_seller_dashboard.xml" value="0.25" />
         <entry key="..\:/Users/Jhony Dev/AndroidStudioProjects/pakReformers/app/src/main/res/layout/activity_splash.xml" value="0.25" />
+        <entry key="..\:/Users/Jhony Dev/AndroidStudioProjects/pakReformers/app/src/main/res/layout/activity_volunteer_dashboard.xml" value="0.25" />
       </map>
     </option>
   </component>

@@ -7,13 +7,15 @@ import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.pakreformers.R;
-import com.app.pakreformers.activities.volunteer.DriveDetails;
 import com.app.pakreformers.activities.volunteer.DrivesDashboard;
 import com.app.pakreformers.info.Info;
 import com.app.pakreformers.models.User;
@@ -45,6 +47,8 @@ public class AuthRegistration extends AppCompatActivity implements Info {
     String strEtEmail;
     String strEtPhone;
     String strEtConfirmPassword;
+
+    Spinner spnAddress;
 
     Dialog dgLoading;
 
@@ -97,6 +101,18 @@ public class AuthRegistration extends AppCompatActivity implements Info {
         etConfirmPassword = findViewById(R.id.et_confirm_pass);
         etFirstName = findViewById(R.id.et_first_name);
         etLastName = findViewById(R.id.et_last_name);
+        spnAddress = findViewById(R.id.spn_address);
+        spnAddress.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ((TextView) adapterView.getChildAt(0)).setTextColor(getColor(R.color.black));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     public void back(View view) {
@@ -124,9 +140,7 @@ public class AuthRegistration extends AppCompatActivity implements Info {
 
         String id = "0";
         User userModel = new User(id, strEtFirstName, strEtLastName, "-",
-                strEtPhone, "-", "-");
-
-
+                strEtPhone, spnAddress.getSelectedItem().toString(), "-");
         initAuth(userModel);
     }
 

@@ -96,33 +96,6 @@
                 android:textColor="@color/text_color"
                 android:textColorHint="@color/hint_color"
                 app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-            <!--            <TextView-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_gravity="start"-->
-            <!--                android:layout_marginTop="10dp"-->
-            <!--                android:text="Classroom"-->
-            <!--                android:textColor="@color/text_color"-->
-            <!--                android:textSize="18sp" />-->
-
-
-            <!--            <EditText-->
-            <!--                android:id="@+id/et_class_room"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginTop="10dp"-->
-            <!--                android:background="@drawable/ic_rectangle_1594"-->
-            <!--                android:drawableStart="@drawable/user"-->
-            <!--                android:drawablePadding="10dp"-->
-            <!--                android:drawableTint="@color/black"-->
-            <!--                android:hint="Classroom"-->
-            <!--                android:inputType="text"-->
-            <!--                android:padding="10dp"-->
-            <!--                android:textColor="@color/text_color"-->
-            <!--                android:textColorHint="@color/hint_color"-->
-            <!--                app:layout_constraintTop_toBottomOf="@+id/imageView3" />-->
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -139,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/ic_rectangle_1594"
-                android:drawableStart="@drawable/user"
+                android:drawableStart="@android:drawable/sym_action_email"
                 android:drawablePadding="10dp"
                 android:drawableTint="@color/black"
                 android:hint="@string/email"
@@ -148,6 +121,31 @@
                 android:textColor="@color/text_color"
                 android:textColorHint="@color/hint_color"
                 app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="10dp"
+                android:text="Address"
+                android:textColor="@color/text_color"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/spn_address"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ic_rectangle_1594"
+                android:drawableStart="?android:attr/textCursorDrawable"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/white"
+                android:entries="@array/provinces"
+                android:hint="@string/description"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/hint_color" />
 
             <TextView
                 android:layout_width="wrap_content"
