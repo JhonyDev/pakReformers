@@ -121,16 +121,16 @@ public class AuthRegistration extends AppCompatActivity implements Info {
 
     public void SignUp(View view) {
         castStrings();
-        if (!Utils.validEt(etFirstName, strEtFirstName))
+        if (!Utils.validEt(etFirstName))
             return;
 
-        if (!Utils.validEt(etLastName, strEtLastName))
+        if (!Utils.validEt(etLastName))
             return;
 
-        if (!Utils.validEt(etEmail, strEtEmail))
+        if (!Utils.validEt(etEmail))
             return;
 
-        if (!Utils.validEt(etPhone, strEtPhone))
+        if (!Utils.validEt(etPhone))
             return;
 
         if (!strEtPassword.equals(strEtConfirmPassword)) {

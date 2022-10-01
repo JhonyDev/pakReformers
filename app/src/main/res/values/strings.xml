@@ -250,6 +250,10 @@
         <item>Accident</item>
         <item>Street Cleaning</item>
     </string-array>
+    <string-array name="statuses">
+        <item>Active</item>
+        <item>Inactive</item>
+    </string-array>
     <string name="leku_title_activity_location_picker">Location Picker</string>
     <string name="leku_load_location_error">Something went wrong. Please try again.</string>
     <string name="leku_no_search_results">There are no results for your search</string>

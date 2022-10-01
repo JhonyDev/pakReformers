@@ -27,7 +27,6 @@ public class LocationUtils implements android.location.LocationListener, Info {
 
     @Override
     public void onLocationChanged(Location loc) {
-        Log.i(TAG, "onLocationChanged: LocationUtils");
         String cityName = null;
         Geocoder gcd = new Geocoder(context, Locale.getDefault());
         List<Address> addresses;
@@ -35,21 +34,17 @@ public class LocationUtils implements android.location.LocationListener, Info {
             addresses = gcd.getFromLocation(loc.getLatitude(),
                     loc.getLongitude(), 1);
             if (addresses.size() > 0) {
-                Log.i(TAG, "onLocationChanged: " + addresses.get(0));
                 try {
                     cityName = addresses.get(0).getSubAdminArea() + ", " + addresses.get(0).getAdminArea() + ", " + addresses.get(0).getCountryName();
                     locationListener.onLocationUpdated(cityName);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                Log.i(TAG, "onLocationChanged: Addresses " + addresses);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            Log.i(TAG, "onLocationChanged: Exception " + e.getMessage());
         }
         String s = cityName;
-        Log.i(TAG, "onLocationChanged: String city name" + s);
     }
 
     @Override

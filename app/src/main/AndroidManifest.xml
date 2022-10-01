@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.app.pakreformers">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -23,14 +24,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CattleManagement">
+        <activity
+            android:name=".activities.volunteer.ResourceManagement"
+            android:exported="false" />
+        <activity
+            android:name=".activities.volunteer.Chats"
+            android:exported="false" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDNGNXz6WK_QbPz4w2-AUrVzYBI_ASemj0" />
 
         <activity
-            android:name=".activities.volunteer.CreateDrive"
+            android:name=".activities.volunteer.UpdateDrive"
             android:exported="false" />
-
         <activity
             android:name=".activities.volunteer.DriveDetails"
             android:exported="false" />
@@ -52,6 +59,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".services.FirebaseMessagingService"
+            android:exported="true"
+            android:permission="TODO"
+            tools:ignore="ExportedService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

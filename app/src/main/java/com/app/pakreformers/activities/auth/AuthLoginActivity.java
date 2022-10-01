@@ -31,8 +31,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Objects;
 
 /**
- * Email = cattlefyp@gmail.com
- * Password = finalyearproject
+ * Email = shekii.shakiir.1@gmail.com
+ * Password = 03346583522
  */
 
 public class AuthLoginActivity extends AppCompatActivity implements Info {
@@ -116,9 +116,9 @@ public class AuthLoginActivity extends AppCompatActivity implements Info {
     }
 
     private boolean isEverythingValid() {
-        if (!Utils.validEt(etEmail, strEtEmail))
+        if (!Utils.validEt(etEmail))
             return false;
-        return Utils.validEt(etPassword, strEtPassword);
+        return Utils.validEt(etPassword);
     }
 
     public void Login(View view) {

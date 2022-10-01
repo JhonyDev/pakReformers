@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_grey"
-    tools:context=".activities.volunteer.CreateDrive">
+    tools:context=".activities.volunteer.UpdateDrive">
 
     <TextView
         android:id="@+id/textView"
@@ -14,7 +14,7 @@
         android:layout_marginStart="20dp"
         android:drawablePadding="20dp"
         android:onClick="back"
-        android:text="@string/sign_up"
+        android:text="Drive details"
         android:textColor="@color/text_color"
         android:textSize="20sp"
         app:drawableStartCompat="@drawable/back_arrow"
@@ -95,6 +95,63 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_marginTop="10dp"
+                android:text="Resources"
+                android:textColor="@color/text_color"
+                android:textSize="18sp" />
+
+
+            <GridLayout
+                android:id="@+id/ll_resources"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:columnCount="4"
+                android:inputType="text"
+                app:layout_constraintTop_toBottomOf="@+id/imageView3">
+
+                <CheckBox
+                    android:id="@+id/cl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Cloths" />
+
+                <CheckBox
+                    android:id="@+id/mn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Money" />
+
+                <CheckBox
+                    android:id="@+id/md"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Medicine" />
+
+                <CheckBox
+                    android:id="@+id/sh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Shelter" />
+
+                <CheckBox
+                    android:id="@+id/fd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Food" />
+
+            </GridLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="10dp"
                 android:text="Type"
                 android:textColor="@color/text_color"
                 android:textSize="18sp" />
@@ -109,6 +166,29 @@
                 android:drawableStart="?android:attr/textCursorDrawable"
                 android:drawablePadding="10dp"
                 android:entries="@array/drive_type"
+                android:hint="@string/description"
+                android:inputType="text"
+                android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/txt_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="10dp"
+                android:text="Update Status"
+                android:textColor="@color/text_color"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/spn_status"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ic_rectangle_1594"
+                android:drawableStart="?android:attr/textCursorDrawable"
+                android:drawablePadding="10dp"
+                android:entries="@array/statuses"
                 android:hint="@string/description"
                 android:inputType="text"
                 android:padding="10dp" />
@@ -140,11 +220,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="50dp"
+
                 android:background="@drawable/button_back"
                 android:backgroundTint="@color/yellow"
                 android:onClick="submit"
                 android:text="Submit"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_delete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/button_back"
+                android:backgroundTint="@color/red"
+                android:onClick="delete"
+                android:text="Delete"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white" />
 
