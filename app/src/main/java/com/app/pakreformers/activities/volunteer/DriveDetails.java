@@ -2,7 +2,6 @@ package com.app.pakreformers.activities.volunteer;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -60,5 +59,9 @@ public class DriveDetails extends AppCompatActivity implements Info {
 
     public void chats(View view) {
         startActivity(new Intent(this, Chats.class));
+    }
+
+    public void resource(View view) {
+        startActivity(new Intent(this, ResourceManagement.class));
     }
 }
