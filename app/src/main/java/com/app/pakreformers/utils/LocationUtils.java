@@ -5,12 +5,12 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 
 import com.app.pakreformers.info.Info;
 import com.app.pakreformers.listeners.LocationListener;
+import com.app.pakreformers.models.CustomLocation;
 
 import java.util.List;
 import java.util.Locale;
@@ -36,7 +36,8 @@ public class LocationUtils implements android.location.LocationListener, Info {
             if (addresses.size() > 0) {
                 try {
                     cityName = addresses.get(0).getSubAdminArea() + ", " + addresses.get(0).getAdminArea() + ", " + addresses.get(0).getCountryName();
-                    locationListener.onLocationUpdated(cityName);
+                    CustomLocation location = new CustomLocation(cityName, addresses.get(0).getLatitude(), addresses.get(0).getLongitude());
+                    locationListener.onLocationUpdated(location);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

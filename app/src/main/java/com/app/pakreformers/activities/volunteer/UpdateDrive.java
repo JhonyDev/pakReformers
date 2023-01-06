@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -22,6 +21,7 @@ import androidx.core.app.ActivityCompat;
 import com.app.pakreformers.R;
 import com.app.pakreformers.info.Info;
 import com.app.pakreformers.listeners.LocationListener;
+import com.app.pakreformers.models.CustomLocation;
 import com.app.pakreformers.models.Drive;
 import com.app.pakreformers.models.User;
 import com.app.pakreformers.services.FcmNotificationsSender;
@@ -62,7 +62,11 @@ public class UpdateDrive extends AppCompatActivity implements LocationListener, 
     CheckBox cbShelter;
     CheckBox cbFood;
 
-    boolean is_update = false;
+    boolean is_update;
+
+    double lat = -999;
+    double lng = -999;
+    ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,6 +137,7 @@ public class UpdateDrive extends AppCompatActivity implements LocationListener, 
             }
 
         }
+
     }
 
     private void initCurrentUser() {
@@ -193,6 +198,10 @@ public class UpdateDrive extends AppCompatActivity implements LocationListener, 
             return;
         if (!Utils.validEt(et_desc))
             return;
+        if (lat == -999) {
+            Toast.makeText(this, "Please wait for the location to be defined", Toast.LENGTH_SHORT).show();
+            return;
+        }
         castStrings();
         String id = UUID.randomUUID().toString();
         if (is_update)
@@ -200,7 +209,7 @@ public class UpdateDrive extends AppCompatActivity implements LocationListener, 
 
 
         Drive drive = new Drive(id, str_et_title, str_et_desc, str_spn_address, str_etAddress
-                , FirebaseAuth.getInstance().getCurrentUser().getUid(), STATUS_ACTIVE);
+                , FirebaseAuth.getInstance().getCurrentUser().getUid(), STATUS_ACTIVE, lat, lng);
 
         if (cbMoney.isChecked())
             drive.setMoney("Money");
@@ -227,6 +236,8 @@ public class UpdateDrive extends AppCompatActivity implements LocationListener, 
         else
             drive.setCloths("");
 
+        drive.setLat(lat);
+        drive.setLng(lng);
 
         FirebaseDatabase.getInstance().getReference().child(NODE_DRIVES)
                 .child(id).setValue(drive).addOnCompleteListener(task -> {
@@ -249,9 +260,10 @@ public class UpdateDrive extends AppCompatActivity implements LocationListener, 
     }
 
     @Override
-    public void onLocationUpdated(String location) {
-        etAddress.setText(location);
-        Log.i(TAG, "onLocationUpdated: " + location);
+    public void onLocationUpdated(CustomLocation location) {
+        etAddress.setText(location.getLocation());
+        lat = location.getLat();
+        lng = location.getLng();
     }
 
     @Override
@@ -267,5 +279,14 @@ public class UpdateDrive extends AppCompatActivity implements LocationListener, 
                         Toast.makeText(this, "Drive successfully deleted", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+
+    public void showOnMap(View view) {
+        if (lat != -999) {
+            Utils.showMarkerOnMap(this, lat, lng);
+        } else {
+            Toast.makeText(this, "Please wait for the location to be defined", Toast.LENGTH_SHORT).show();
+        }
     }
 }

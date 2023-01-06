@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_grey"
@@ -114,36 +115,41 @@
                     android:id="@+id/cl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Cloths" />
+                    android:layout_gravity="start"
+                    android:text="Cloths"
+                    android:textColor="@color/black" />
 
                 <CheckBox
                     android:id="@+id/mn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Money" />
+                    android:layout_gravity="start"
+                    android:text="Money"
+                    android:textColor="@color/black" />
 
                 <CheckBox
                     android:id="@+id/md"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Medicine" />
+                    android:layout_gravity="start"
+                    android:text="Medicine"
+                    android:textColor="@color/black" />
 
                 <CheckBox
                     android:id="@+id/sh"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Shelter" />
+                    android:layout_gravity="start"
+                    android:text="Shelter"
+                    android:textColor="@color/black" />
 
                 <CheckBox
                     android:id="@+id/fd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Food" />
+                    android:layout_gravity="start"
+                    android:text="Food"
+                    android:textColor="@color/black" />
 
             </GridLayout>
 
@@ -203,24 +209,61 @@
                 android:textSize="18sp" />
 
 
-            <EditText
-                android:id="@+id/et_address"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/ic_rectangle_1594"
-                android:hint="Address"
-                android:inputType="text"
-                android:padding="10dp"
-                android:textColor="@color/text_color"
-                android:textColorHint="@color/hint_color"
-                app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <EditText
+                    android:id="@+id/et_address"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="9"
+                    android:background="@drawable/ic_rectangle_1594"
+                    android:hint="Address"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textColor="@color/text_color"
+                    android:textColorHint="@color/hint_color"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/location"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/location"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/black"
+                    android:gravity="center"
+                    app:cardBackgroundColor="@color/yellow"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintBottom_toBottomOf="@id/et_address"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/et_address">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:onClick="showOnMap"
+                        android:src="@android:drawable/ic_menu_mapmode" />
+
+
+                </com.google.android.material.card.MaterialCardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-
                 android:background="@drawable/button_back"
                 android:backgroundTint="@color/yellow"
                 android:onClick="submit"

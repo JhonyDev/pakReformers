@@ -5,9 +5,9 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-feature
         android:name="android.hardware.location.network"
         android:required="false" />
@@ -25,6 +25,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CattleManagement">
         <activity
+            android:name=".activities.ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.volunteer.ResourceManagement"
             android:exported="false" />
         <activity
@@ -33,7 +36,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDNGNXz6WK_QbPz4w2-AUrVzYBI_ASemj0" />
+            android:value="AIzaSyC0PBacgs2dLUhmkwqm__m0Fao-4mbO3DM" />
 
         <activity
             android:name=".activities.volunteer.UpdateDrive"
@@ -45,13 +48,13 @@
             android:name=".activities.volunteer.DrivesDashboard"
             android:exported="false" />
         <activity
-            android:name="com.app.pakreformers.activities.auth.AuthRegistration"
+            android:name=".activities.auth.AuthRegistration"
             android:exported="false" />
         <activity
-            android:name="com.app.pakreformers.activities.auth.AuthLoginActivity"
+            android:name=".activities.auth.AuthLoginActivity"
             android:exported="false" />
         <activity
-            android:name="com.app.pakreformers.activities.Splash"
+            android:name=".activities.Splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

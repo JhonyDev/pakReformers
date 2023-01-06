@@ -11,12 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.pakreformers.R;
+import com.app.pakreformers.activities.ProfileActivity;
 import com.app.pakreformers.activities.auth.AuthLoginActivity;
 import com.app.pakreformers.adapters.TypeRecyclerViewAdapter;
 import com.app.pakreformers.info.Info;
 import com.app.pakreformers.models.Drive;
 import com.app.pakreformers.models.Super;
-import com.app.pakreformers.services.FcmNotificationsSender;
 import com.app.pakreformers.singletons.DriveSingleton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -30,8 +30,9 @@ import java.util.List;
 
 public class DrivesDashboard extends AppCompatActivity implements Info {
     TypeRecyclerViewAdapter typeRecyclerViewAdapter;
-    List<Super> listInstances;
     RecyclerView recyclerView;
+
+    List<Super> listInstances;
     RadioButton rbMy;
     RadioButton rbActive;
     TextView tvActive;
@@ -74,7 +75,7 @@ public class DrivesDashboard extends AppCompatActivity implements Info {
         typeRecyclerViewAdapter.notifyDataSetChanged();
         FirebaseDatabase.getInstance().getReference()
                 .child(NODE_DRIVES)
-                .addListenerForSingleValueEvent(new ValueEventListener() {
+                .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         listInstances.clear();
@@ -84,11 +85,13 @@ public class DrivesDashboard extends AppCompatActivity implements Info {
                                 if (is_active) {
                                     if (drive.getStatus().equals(STATUS_ACTIVE))
                                         listInstances.add(drive);
-                                } else {
-                                    if (drive.getCreator().equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))
-                                        listInstances.add(drive);
-                                }
-
+                                } else
+                                    try {
+                                        if (drive.getCreator().equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))
+                                            listInstances.add(drive);
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
                             }
                         }
                         if (listInstances.isEmpty())
@@ -107,10 +110,6 @@ public class DrivesDashboard extends AppCompatActivity implements Info {
 
     public void back(View view) {
         finish();
-    }
-
-    public void exploreCattle(View view) {
-        startActivity(new Intent(this, DriveDetails.class));
     }
 
     public void logout(View view) {
@@ -137,5 +136,9 @@ public class DrivesDashboard extends AppCompatActivity implements Info {
     protected void onDestroy() {
         super.onDestroy();
         DriveSingleton.setSelectedDrive(null);
+    }
+
+    public void showProfile(View view) {
+        startActivity(new Intent(this, ProfileActivity.class));
     }
 }

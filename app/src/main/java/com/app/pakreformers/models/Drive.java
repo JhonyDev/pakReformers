@@ -15,10 +15,14 @@ public class Drive extends Super {
     String shelter;
     String medicine;
 
+    double lat;
+    double lng;
+
     public Drive() {
     }
 
-    public Drive(String id, String title, String description, String type, String address, String creator, String status) {
+    public Drive(String id, String title, String description, String type, String address,
+                 String creator, String status, double lat, double lng) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -26,6 +30,24 @@ public class Drive extends Super {
         this.address = address;
         this.creator = creator;
         this.status = status;
+        this.lat = lat;
+        this.lng = lng;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLng() {
+        return lng;
+    }
+
+    public void setLng(double lng) {
+        this.lng = lng;
     }
 
     public String getMedicine() {

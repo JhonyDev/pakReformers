@@ -9,13 +9,13 @@ import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.pakreformers.R;
-import com.app.pakreformers.activities.volunteer.DriveDetails;
 import com.app.pakreformers.activities.volunteer.DrivesDashboard;
 import com.app.pakreformers.info.Info;
 import com.app.pakreformers.models.User;
@@ -32,7 +32,7 @@ import java.util.Objects;
 
 /**
  * Email = shekii.shakiir.1@gmail.com
- * Password = 03346583522
+ * Password = 03346583522.
  */
 
 public class AuthLoginActivity extends AppCompatActivity implements Info {
@@ -43,6 +43,7 @@ public class AuthLoginActivity extends AppCompatActivity implements Info {
     String strEtEmail;
     String strEtPassword;
     boolean isPassVisible = false;
+    TextView forgotPassword;
     private Dialog loadingDialog;
 
     @Override
@@ -50,6 +51,7 @@ public class AuthLoginActivity extends AppCompatActivity implements Info {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = this;
+        forgotPassword = findViewById(R.id.forgot_password);
 
         etEmail = findViewById(R.id.et_email);
         etPassword = findViewById(R.id.et_pass);
@@ -61,7 +63,14 @@ public class AuthLoginActivity extends AppCompatActivity implements Info {
             loadingDialog.show();
             parseUserData();
         }
-
+        forgotPassword.setOnClickListener(view -> {
+            String strEmail = etEmail.getText().toString().trim();
+            if (strEmail.isEmpty()) {
+                etEmail.setError("Please enter email first.");
+            } else {
+                Utils.sendPasswordResetEmail(AuthLoginActivity.this, strEmail);
+            }
+        });
     }
 
     private void parseUserData() {
@@ -89,9 +98,6 @@ public class AuthLoginActivity extends AppCompatActivity implements Info {
                     }
                 });
     }
-
-
-
 
 
     public void signUp(View view) {

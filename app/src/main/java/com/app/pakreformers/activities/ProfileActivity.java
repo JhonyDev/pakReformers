@@ -1,11 +1,8 @@
-package com.app.pakreformers.activities.auth;
+package com.app.pakreformers.activities;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -13,65 +10,76 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.pakreformers.R;
-import com.app.pakreformers.activities.volunteer.DrivesDashboard;
 import com.app.pakreformers.info.Info;
 import com.app.pakreformers.models.User;
 import com.app.pakreformers.singletons.CurrentUserSingleton;
 import com.app.pakreformers.utils.DialogUtils;
 import com.app.pakreformers.utils.Utils;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.Arrays;
 import java.util.Objects;
 
-public class AuthRegistration extends AppCompatActivity implements Info {
-
+public class ProfileActivity extends AppCompatActivity implements Info {
     public static Activity context;
-
     public static String strEtPassword;
-    boolean isPassVisible = false;
-
-    EditText etEmail;
     EditText etPhone;
-    EditText etPassword;
-    EditText etConfirmPassword;
     EditText etFirstName;
     EditText etLastName;
-
-
     String strEtFirstName;
     String strEtLastName;
-    String strEtEmail;
     String strEtPhone;
-    String strEtConfirmPassword;
-
     Spinner spnAddress;
-
     Dialog dgLoading;
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration);
+        setContentView(R.layout.activity_profile);
         context = this;
         initViews();
+        initUserDetails();
         dgLoading = new Dialog(this);
         DialogUtils.initLoadingDialog(dgLoading);
+
+        Utils.setCharValidation(etFirstName);
+        Utils.setCharValidation(etLastName);
+
     }
 
-    public void showPassword(View view) {
-        if (!isPassVisible) {
-            etConfirmPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-            etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-            isPassVisible = true;
-        } else {
-            etConfirmPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-            etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-            isPassVisible = false;
-        }
+
+    private void initUserDetails() {
+        FirebaseDatabase.getInstance().getReference().child(NODE_USERS).child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        User user = snapshot.getValue(User.class);
+                        if (user != null) {
+
+                            ProfileActivity.this.user = user;
+                            etPhone.setText(user.getStrEtPhone());
+                            etFirstName.setText(user.getStrEtFirstName());
+                            etLastName.setText(user.getStrEtLastName());
+                            String[] myArray = getResources().getStringArray(R.array.provinces);
+                            spnAddress.setSelection(Arrays.asList(myArray).indexOf(user.getAddress()));
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
     }
 
 
@@ -88,21 +96,13 @@ public class AuthRegistration extends AppCompatActivity implements Info {
     private void castStrings() {
         strEtFirstName = etFirstName.getText().toString();
         strEtLastName = etLastName.getText().toString();
-        strEtEmail = etEmail.getText().toString();
         strEtPhone = etPhone.getText().toString();
-        strEtPassword = etPassword.getText().toString();
-        strEtConfirmPassword = etConfirmPassword.getText().toString();
     }
 
     private void initViews() {
-        etEmail = findViewById(R.id.et_user_name);
         etPhone = findViewById(R.id.et_phone);
-        etPassword = findViewById(R.id.et_pass);
-        etConfirmPassword = findViewById(R.id.et_confirm_pass);
         etFirstName = findViewById(R.id.et_first_name);
         etLastName = findViewById(R.id.et_last_name);
-        Utils.setCharValidation(etFirstName);
-        Utils.setCharValidation(etLastName);
         spnAddress = findViewById(R.id.spn_address);
         spnAddress.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -129,34 +129,19 @@ public class AuthRegistration extends AppCompatActivity implements Info {
         if (!Utils.validEt(etLastName))
             return;
 
-        if (!Utils.validEt(etEmail))
-            return;
-
         if (!Utils.validEt(etPhone))
             return;
 
-        if (!strEtPassword.equals(strEtConfirmPassword)) {
-            Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        String id = "0";
-        User userModel = new User(id, strEtFirstName, strEtLastName, "-",
-                strEtPhone, spnAddress.getSelectedItem().toString(), "-");
-        initAuth(userModel);
+        user.setStrEtFirstName(strEtFirstName);
+        user.setStrEtLastName(strEtLastName);
+        user.setStrEtPhone(strEtPhone);
+        user.setAddress(spnAddress.getSelectedItem().toString());
+        initAuth(user);
     }
 
     private void initAuth(User userModel) {
         dgLoading.show();
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(strEtEmail, strEtConfirmPassword)
-                .addOnCompleteListener(task -> {
-                    dgLoading.dismiss();
-                    if (task.isSuccessful()) {
-                        userModel.setId(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());
-                        initData(userModel);
-                    } else
-                        Toast.makeText(AuthRegistration.this, "An Error Occurred", Toast.LENGTH_SHORT).show();
-                });
+        initData(userModel);
     }
 
     private void initData(User userModel) {
@@ -169,11 +154,10 @@ public class AuthRegistration extends AppCompatActivity implements Info {
                     dgLoading.dismiss();
                     if (task.isSuccessful()) {
                         CurrentUserSingleton.setInstance(userModel);
-                        startActivity(new Intent(AuthRegistration.this, DrivesDashboard.class));
-                        finish();
-
+                        Toast.makeText(context, "Profile Updated", Toast.LENGTH_SHORT).show();
+                        initUserDetails();
                     } else
-                        Toast.makeText(AuthRegistration.this, "ERROR OCCURRED", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "ERROR OCCURRED", Toast.LENGTH_SHORT).show();
                 });
     }
 }
