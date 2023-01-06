@@ -29,12 +29,11 @@ public class Utils {
         return FirebaseDatabase.getInstance().getReference();
     }
 
-    public static void showMarkerOnMap(Context context, double latitude, double longitude) {
+    public static void showMarkerOnMap(Context context, double latitude, double longitude, String location) {
         // Create a Uri object that specifies the location of the marker
 
-        String label = "New York City";
         String uriBegin = "geo:" + latitude + "," + longitude;
-        String query = latitude + "," + longitude + "(" + label + ")";
+        String query = latitude + "," + longitude + "(" + location + ")";
         String encodedQuery = Uri.encode(query);
         String uriString = uriBegin + "?q=" + encodedQuery + "&z=16";
         Uri uri = Uri.parse(uriString);

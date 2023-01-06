@@ -66,7 +66,8 @@ public class UpdateDrive extends AppCompatActivity implements LocationListener, 
 
     double lat = -999;
     double lng = -999;
-    ;
+    String location;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -264,6 +265,7 @@ public class UpdateDrive extends AppCompatActivity implements LocationListener, 
         etAddress.setText(location.getLocation());
         lat = location.getLat();
         lng = location.getLng();
+        UpdateDrive.this.location = location.getLocation();
     }
 
     @Override
@@ -284,7 +286,7 @@ public class UpdateDrive extends AppCompatActivity implements LocationListener, 
 
     public void showOnMap(View view) {
         if (lat != -999) {
-            Utils.showMarkerOnMap(this, lat, lng);
+            Utils.showMarkerOnMap(this, lat, lng, location);
         } else {
             Toast.makeText(this, "Please wait for the location to be defined", Toast.LENGTH_SHORT).show();
         }

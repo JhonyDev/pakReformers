@@ -103,7 +103,7 @@ public class DriveDetails extends AppCompatActivity implements Info {
     }
 
     public void driveLocation(View view) {
-        Utils.showMarkerOnMap(this, DriveSingleton.getInstance().getLat(), DriveSingleton.getInstance().getLng());
+        Utils.showMarkerOnMap(this, DriveSingleton.getInstance().getLat(), DriveSingleton.getInstance().getLng(), DriveSingleton.getInstance().getAddress());
     }
 
     public void driveParticipants(View view) {
